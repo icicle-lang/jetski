@@ -13,7 +13,7 @@ import           Disorder.Core.IO
 
 import           Foreign.Ptr (intPtrToPtr)
 
-import           Jetski
+import           Jetski as Jetski
 
 import           P
 
@@ -29,7 +29,7 @@ import           X.Control.Monad.Trans.Either (EitherT, runEitherT)
 
 prop_library name (Values args) = testEitherT $ do
   withLibrary extraOptions (source name args) $ \library -> do
-    f <- function library (unName name) retCInt
+    f <- Jetski.function library (unName name) retCInt
     _ <- liftIO (f (fmap ffiArg args))
     return (property succeeded)
 

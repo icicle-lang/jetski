@@ -17,11 +17,11 @@ library
                      , ambiata-x-eithert
                      , bytestring                      == 0.10.*
                      , cryptonite                      == 0.15.*
-                     , directory                       == 1.2.*
+                     , directory                       >= 1.2        && < 1.4
                      , exceptions                      >= 0.6        && < 0.9
                      , filepath                        == 1.4.*
-                     , memory                          == 0.13.*
-                     , process                         >= 1.2.3      && < 1.5
+                     , memory                          >= 0.13       && < 0.15
+                     , process                         >= 1.2.3      && < 1.7
                      , temporary                       == 1.2.*
                      , text                            == 1.2.*
                      , transformers                    >= 0.3        && < 0.6
@@ -53,18 +53,21 @@ test-suite test
   hs-source-dirs:
                        test
 
+  other-modules:       Test.Jetski
+                       Test.Jetski.Arbitrary
+
   build-depends:
-                       base                            >= 3          && < 5
+                       base
                      , ambiata-disorder-core
                      , ambiata-disorder-corpus
                      , ambiata-jetski
                      , ambiata-p
                      , ambiata-x-eithert
-                     , containers                      == 0.5.*
-                     , QuickCheck                      >= 2.8.2      && < 2.9
-                     , quickcheck-instances            == 0.3.*
-                     , text                            == 1.2.*
-                     , transformers                    >= 0.3        && < 0.6
+                     , containers
+                     , QuickCheck
+                     , quickcheck-instances
+                     , text
+                     , transformers
 
 test-suite test-dynamic
   -- Cabal < 1.24 doesn't build this properly, but there's no way to do a
@@ -82,15 +85,18 @@ test-suite test-dynamic
   hs-source-dirs:
                        test
 
+  other-modules:       Test.Jetski
+                       Test.Jetski.Arbitrary
+
   build-depends:
-                       base                            >= 3          && < 5
+                       base
                      , ambiata-disorder-core
                      , ambiata-disorder-corpus
                      , ambiata-jetski
                      , ambiata-p
                      , ambiata-x-eithert
-                     , containers                      == 0.5.*
-                     , QuickCheck                      >= 2.8.2      && < 2.9
-                     , quickcheck-instances            == 0.3.*
-                     , text                            == 1.2.*
-                     , transformers                    >= 0.3        && < 0.6
+                     , containers
+                     , QuickCheck
+                     , quickcheck-instances
+                     , text
+                     , transformers
