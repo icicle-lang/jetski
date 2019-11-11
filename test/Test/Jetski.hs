@@ -9,8 +9,6 @@ import           Control.Monad.IO.Class (liftIO)
 
 import qualified Data.Text as T
 
-import           Disorder.Core.IO
-
 import           Foreign.Ptr (intPtrToPtr)
 
 import           Jetski as Jetski
@@ -21,9 +19,10 @@ import           System.IO (IO)
 
 import           Test.Jetski.Arbitrary
 import           Test.QuickCheck
+import           Test.QuickCheck.Monadic (monadicIO, run)
 import           Test.QuickCheck.Property (succeeded)
 
-import           X.Control.Monad.Trans.Either (EitherT, runEitherT)
+import           Control.Monad.Trans.Either (EitherT, runEitherT)
 
 ------------------------------------------------------------------------
 
@@ -74,7 +73,7 @@ ffiArg (VoidPtr _ x) = argPtr (intPtrToPtr x)
 ------------------------------------------------------------------------
 
 testEitherT :: EitherT JetskiError IO Property -> Property
-testEitherT action = testIO $ do
+testEitherT action = monadicIO . run $ do
     e <- runEitherT action
     case e of
       Left  l -> failProp l

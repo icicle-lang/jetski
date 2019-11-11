@@ -54,8 +54,8 @@ import           System.IO.Temp (createTempDirectory)
 import           System.Posix.DynamicLinker (DL(..), RTLDFlags(..), dlopen, dlclose, dlsym)
 import           System.Process (CreateProcess(..), proc, readCreateProcessWithExitCode)
 
-import           X.Control.Monad.Trans.Either (EitherT, pattern EitherT)
-import           X.Control.Monad.Trans.Either (bracketEitherT', left)
+import           Control.Monad.Trans.Either (EitherT, pattern EitherT)
+import           Control.Monad.Trans.Either (bracketEitherT, left)
 
 
 ------------------------------------------------------------------------
@@ -122,7 +122,7 @@ withLibrary
   -> (Library -> EitherT JetskiError m a)
   -> EitherT JetskiError m a
 
-withLibrary options source action = bracketEitherT' acquire release action
+withLibrary options source action = bracketEitherT acquire release action
   where
     acquire = compileLibrary NoCacheLibrary options source
     release = releaseLibrary
@@ -310,8 +310,8 @@ withSystemTempDirectory
   -> EitherT JetskiError m a
 
 withSystemTempDirectory template =
-  bracketEitherT' (createSystemTempDirectory template)
-                  (tryIO . removeDirectoryRecursive)
+  bracketEitherT (createSystemTempDirectory template)
+                 (tryIO . removeDirectoryRecursive)
 
 createSystemTempDirectory :: MonadIO m => FilePath -> EitherT JetskiError m FilePath
 createSystemTempDirectory template =

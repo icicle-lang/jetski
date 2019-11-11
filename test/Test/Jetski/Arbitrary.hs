@@ -9,7 +9,7 @@ import qualified Data.List as List
 import qualified Data.Text as T
 import           Data.Word (Word)
 
-import           Disorder.Corpus
+import           Hedgehog.Corpus
 
 import           Foreign.Ptr (IntPtr)
 
