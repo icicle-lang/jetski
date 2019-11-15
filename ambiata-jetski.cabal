@@ -1,14 +1,26 @@
 name:                  ambiata-jetski
 version:               0.0.1
-license:               AllRightsReserved
+license:               BSD3
+license-file:          LICENSE
 author:                Ambiata <info@ambiata.com>
 maintainer:            Ambiata <info@ambiata.com>
 copyright:             (c) 2015 Ambiata.
-synopsis:              jetski
+synopsis:              Jetski C compilation
 category:              System
 cabal-version:         >= 1.8
 build-type:            Simple
-description:           jetski
+description:           Jetski provides C compilation and execution as a haskell library
+
+tested-with:
+  GHC==8.0.2,
+  GHC==8.2.2,
+  GHC==8.4.4,
+  GHC==8.6.5,
+  GHC==8.8.1
+
+source-repository head
+  type:     git
+  location: https://github.com/icicle-lang/jetski.git
 
 library
   build-depends:
