@@ -1,7 +1,11 @@
-jetski
-======
+<div align="center">
 
-> Floats on the sea.
+# Jetski
+### Runtime compilation and execution of C code.
+
+[![Build Status](https://api.travis-ci.com/icicle-lang/jetski.svg?branch=master)](https://travis-ci.com/icicle-lang/jetski)
+
+</div>
 
 ![jetski](img/jetski.jpg)
 
